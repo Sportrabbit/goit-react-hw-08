@@ -1,0 +1,20 @@
+.container-contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    min-width: 300px;
+    border: 1px solid rgb(57, 57, 57);
+    border-radius: 5px;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-del {
+    cursor: pointer;
+    height: 30px;
+}
