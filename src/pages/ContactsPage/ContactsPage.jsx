@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
 
-import css from "ContactsPage.module.css";
+import css from "./ContactsPage.module.css";
 
 export default function ContactsPage() {
     const dispatch = useDispatch();
