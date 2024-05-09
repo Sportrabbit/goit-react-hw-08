@@ -4,8 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../layout/Layout';
 import { PrivateRoute } from '../privateRoute/PrivateRoute';
 import { RestrictedRoute } from '../restrictedRout/RestrictedRout';
-import { refreshUser } from '../redux/auth/operations';
-import { selectIsRefreshing } from '../redux/auth/selectors';
+import { refreshUser } from '../../redux/auth/operations';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
