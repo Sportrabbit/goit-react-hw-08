@@ -2,7 +2,7 @@ import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./operations";
 import { selectContacts } from "./selectors";
 import { selectNameFilter } from "../filters/selectors";
-import { logout } from "../auth/operations";
+import { logOut } from "../auth/operations";
 
 export const initialContact = {
 
@@ -49,7 +49,7 @@ extraReducers: (builder) => {
         );
     })
     .addCase(deleteContact.rejected, handleRejected)
-    .addCase(logout.fulfilled, () => {
+    .addCase(logOut.fulfilled, () => {
     return initialContact;
     });
 },
