@@ -28,24 +28,33 @@ export const RegisterForm = () => {
 
   return (
     <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={FeedbackSchema}>
-        <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-          <label className={css.label}>
-            Username
-            <input type="text" name="name" />
-          </label>
-          <label className={css.label}>
-            Email
-            <input type="email" name="email" />
-          </label>
-          <label className={css.label}>
-            Password
-            <input type="password" name="password" />
-          </label>
-          <button type="submit">Register</button>
-        </form>
+        initialValues={{ name: "", email: "", password: "" }}
+        validationSchema={RegisterSchema}
+        onSubmit={(values, {resetForm}) => {
+          dispatch(register(values));
+          resetForm();
+        }}
+        >
+        <Form>
+          <div>
+            <div className={css["register-cont"]}>
+              <label htmlFor={nameId}>Username</label>
+              <Field type="text" name="name" id={nameId} className={css["input"]}/>
+            </div>
+            <ErrorMessage name='Username' component="div"/>
+            <div>
+              <label htmlFor={emailId}>Email</label>
+              <Field type="text" name="name" id={emailId} className={css["input"]}/>
+            </div>
+            <ErrorMessage name='Useremail' component="div"/>
+            <div>
+              <label htmlFor={passwordId}>Password</label>
+              <Field type="number" name="name" id={passwordId} className={css["input"]}/>
+            </div>
+            <ErrorMessage name='Userpassword' component="div"/>
+          </div>
+          <button type="submit" className={css["btn-sub"]}>Register</button>
+        </Form>
     </Formik>
   );
 };

@@ -1,0 +1,30 @@
+.register-cont {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+.input {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 15px;
+}
+
+.btn-sub {
+    cursor: pointer;
+    border: 2px solid rgb(90, 113, 205);
+    border-radius: 8px;
+    color: rgb(90, 113, 205);
+    padding: 8px 16px;
+    transition: all 300ms ease-in-out;
+    background-color: inherit;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.btn-sub:hover {
+    border-color: rgb(139, 242, 242);
+    color: rgb(139, 242, 242);
+}
