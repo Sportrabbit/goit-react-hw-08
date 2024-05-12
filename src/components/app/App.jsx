@@ -12,7 +12,7 @@ const RegisterPage = lazy(() => import('../../pages/RegistrationPage/Registratio
 const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
 const ContactsPage = lazy(() => import('../../pages/ContactsPage/ContactsPage'));
 
-export const App = () => {
+export default function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useSelector(selectIsRefreshing);
 
@@ -47,4 +47,4 @@ export const App = () => {
       </Routes>
     </Layout>
   );
-};
+}
