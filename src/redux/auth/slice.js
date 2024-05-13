@@ -25,37 +25,42 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
     name: 'auth',
     initialState: initialState,
-
+    reducers: {},
     extraReducers: (builder) => {
     builder
     .addCase(register.pending, handlePending)
     .addCase(register.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
     })
     .addCase(register.rejected, handleRejected)
     .addCase(logIn.pending, handlePending)
     .addCase(logIn.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = [...state.items, action.payload];
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
     })
     .addCase(logIn.rejected, handleRejected)
     .addCase(logOut.pending, handlePending)
-    .addCase(logOut.fulfilled, (state, action) => {
+    .addCase(logOut.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
-        state.items = state.items.filter(
-            (item) => item.id !== action.payload.id
-        );
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
     })
     .addCase(logOut.rejected, handleRejected)
     .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
     })
     .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
     })
