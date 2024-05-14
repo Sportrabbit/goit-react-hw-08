@@ -25,8 +25,10 @@ export default function App() {
   }, [dispatch, isFirstLoad]);
 
   return (
+    <>
+    {isRefreshing && !isFirstLoad && <b>Refreshing user...</b> }
+    {!isRefreshing && (
     <Layout>
-      {isRefreshing && !isFirstLoad && <b>Refreshing user...</b> }
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -34,20 +36,22 @@ export default function App() {
           element={
             <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
           }
-        />
+          />
         <Route
           path="/login"
           element={
             <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
           }
-        />
+          />
         <Route
           path="/contacts"
           element={
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
-        />
+          />
       </Routes>
     </Layout>
+    )}
+  </>
   );
 }
