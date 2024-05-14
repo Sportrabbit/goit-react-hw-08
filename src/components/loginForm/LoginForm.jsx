@@ -6,12 +6,11 @@ import css from './LoginForm.module.css';
 import { useId } from 'react';
 
 const loginSchema = Yup.object().shape({
-    name: Yup.string()
-        .min(3)
-        .max(50, "Must be less than 50")
-        .required("Required"),
-    tel: Yup.string()
-        .min(3)
+    email: Yup.string()
+        .email("Invalid email format")
+        .required("Email is required"),
+    password: Yup.string()
+        .min(8, "Password must be at least 8 characters")
         .max(50, "Must be less than 50")
         .required("Required"),
 });
@@ -33,8 +32,9 @@ export const LoginForm = () => {
         <Form>
             <div>
                 <div className={css["form-cont"]}>
-                    <label htmlFor={emailId} className={css.label}>Email</label>
-                    <Field type="email"
+                    <label className={css.label}>Email</label>
+                    <Field 
+                    type="email"
                     id={emailId}
                     name="email"
                     className={css["field"]}
@@ -44,12 +44,13 @@ export const LoginForm = () => {
             </div>
             <div>
                 <div>
-                <label htmlFor={passwordId} className={css.label}>Password</label>
-                <Field type="password"
+                <label className={css.label}>Password</label>
+                <Field 
+                    type="password"
                     id={passwordId}
                     name="password"
                     className={css["field"]}
-                    />
+                />
                 </div>
                 <ErrorMessage name='password' component="div" />
             </div>

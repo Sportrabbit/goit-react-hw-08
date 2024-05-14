@@ -11,9 +11,8 @@ const RegisterSchema = Yup.object().shape({
         .max(50, "Must be less than 50")
         .required("Required"),
     email: Yup.string()
-        .min(3)
-        .max(50, "Must be less than 50")
-        .required("Required"),
+      .email("Invalid email format")
+      .required("Required"),
     password: Yup.string()
         .min(8)
         .max(50, "Must be less than 50")
@@ -41,17 +40,17 @@ export const RegisterForm = () => {
               <label htmlFor={nameId}>Username</label>
               <Field type="text" name="name" id={nameId} className={css["input"]}/>
             </div>
-            <ErrorMessage name='Username' component="div"/>
+            <ErrorMessage name='name' component="div"/>
             <div>
               <label htmlFor={emailId}>Email</label>
-              <Field type="text" name="name" id={emailId} className={css["input"]}/>
+              <Field type="text" name="email" id={emailId} className={css["input"]}/>
             </div>
-            <ErrorMessage name='Useremail' component="div"/>
+            <ErrorMessage name='email' component="div"/>
             <div>
               <label htmlFor={passwordId}>Password</label>
-              <Field type="number" name="name" id={passwordId} className={css["input"]}/>
+              <Field type="password" name="password" id={passwordId} className={css["input"]}/>
             </div>
-            <ErrorMessage name='Userpassword' component="div"/>
+            <ErrorMessage name='password' component="div"/>
           </div>
           <button type="submit" className={css["btn-sub"]}>Register</button>
         </Form>
