@@ -1,4 +1,4 @@
-import { useEffect, lazy, useState } from 'react';
+import { useEffect, lazy, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../layout/Layout';
@@ -14,19 +14,15 @@ const ContactsPage = lazy(() => import('../../pages/ContactsPage/ContactsPage'))
 
 export default function App() {
   const dispatch = useDispatch();
-  const { isRefreshing } = useSelector(selectIsRefreshing);
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    if (isFirstLoad) {
-      setIsFirstLoad(false);
       dispatch(refreshUser());
-    }
-  }, [dispatch, isFirstLoad]);
+  }, [dispatch]);
 
   return (
     <>
-    {isRefreshing && !isFirstLoad && <b>Refreshing user...</b> }
+    {isRefreshing && <b>Refreshing user...</b> }
     {!isRefreshing && (
     <Layout>
       <Routes>
