@@ -45,7 +45,7 @@ extraReducers: (builder) => {
         state.loading = false;
         state.error = null;
         state.items = state.items.filter(
-            (item) => item.id !== action.payload.id
+            (item) => item.id !== action.payload
         );
     })
     .addCase(deleteContact.rejected, handleRejected)
@@ -58,7 +58,7 @@ extraReducers: (builder) => {
 export const selectFilteredContacts = createSelector(
 [selectContacts, selectNameFilter],
 (contacts, filter) => {
-    return contacts.items.filter(
+    return contacts.filter(
         (contact) => 
         contact.name.toLowerCase().includes(filter.toLowerCase()) ||
         contact.number.toLowerCase().includes(filter.toLowerCase())
